@@ -39,6 +39,7 @@
         <Compile Include="Hooks\EnemySpawner.cs"/>
         <Compile Include="Hooks\BattleInputController.cs"/>
         <Compile Include="Hooks\FirestoneResearchHandler.cs"/>
+        <Compile Include="Hooks\SpeedHackDetector.cs"/>
         <Compile Include="Hooks\TempleOfEternalsMech.cs"/>
         <Compile Include="Main.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>

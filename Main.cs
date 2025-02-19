@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Il2CppCodeStage.AntiCheat.Detectors;
 using MelonLoader;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,6 +25,7 @@ namespace FireCheetos
         public static bool feature2Enabled;
         public static bool feature3Enabled;
         public static bool feature4Enabled;
+        public static bool feature5Enabled;
 
         private List<Button> buttonsUpgrade;
         private object clickCoroutine; // Armazena a corrotina em execução
@@ -31,9 +34,11 @@ namespace FireCheetos
 
         public override void OnInitializeMelon()
         {
+            SpeedHackDetector.StopDetection();
+
             var harmony = new HarmonyLib.Harmony("br.com.danilogmoura.ieh");
             harmony.PatchAll();
-            MelonLogger.Msg("FIRPG Mod Inicializado!");
+            MelonLogger.Msg("Fire Cheetos Inicializado!");
         }
 
         public override void OnUpdate()
@@ -115,6 +120,22 @@ namespace FireCheetos
                 .ForEach(button => button.onClick.Invoke());
         }
 
+        private void ToggleSpeedHack()
+        {
+            try
+            {
+                SpeedHackDetector.StopDetection();
+            }
+            catch (Exception e)
+            {
+                MelonDebug.Error("Erro ao desativar o SpeedHackDetector: " + e);
+            }
+
+            feature5Enabled = !feature5Enabled;
+            Time.timeScale = feature5Enabled ? 2f : 1f;
+            MelonDebug.Msg($"Speed Hack: {feature5Enabled}");
+        }
+
         public override void OnGUI()
         {
             if (!showMenu) return;
@@ -122,7 +143,7 @@ namespace FireCheetos
             const float menuX = 180;
             const float menuY = 80;
             const float width = 200;
-            const float height = 155;
+            const float height = 190;
 
             const float buttonX = menuX + 10;
             const float buttonWidth = 180;
@@ -164,6 +185,10 @@ namespace FireCheetos
             }
 
             if (GUI.Button(new Rect(buttonX, menuY + 115, buttonWidth, buttonHeight),
+                    feature5Enabled ? "Speed Hack: ON" : "Speed Hack: OFF"))
+                ToggleSpeedHack();
+
+            if (GUI.Button(new Rect(buttonX, menuY + 150, buttonWidth, buttonHeight),
                     feature3Enabled ? "Weakened Enemies: ON" : "Weakened Enemies: OFF"))
             {
                 feature3Enabled = !feature3Enabled;
