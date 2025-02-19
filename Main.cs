@@ -132,7 +132,7 @@ namespace FireCheetos
             }
 
             feature5Enabled = !feature5Enabled;
-            Time.timeScale = feature5Enabled ? 2f : 1f;
+            Time.timeScale = feature5Enabled ? 3f : 1f;
             MelonDebug.Msg($"Speed Hack: {feature5Enabled}");
         }
 
