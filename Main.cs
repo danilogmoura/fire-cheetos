@@ -34,7 +34,11 @@ namespace FireCheetos
 
         public override void OnInitializeMelon()
         {
+            InjectionDetector.StopDetection();
+            ObscuredCheatingDetector.StopDetection();
             SpeedHackDetector.StopDetection();
+            TimeCheatingDetector.StopDetection();
+            WallHackDetector.StopDetection();
 
             var harmony = new HarmonyLib.Harmony("br.com.danilogmoura.ieh");
             harmony.PatchAll();
