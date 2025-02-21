@@ -9,8 +9,8 @@ namespace FireCheetos.Hooks
     {
         private static bool Prefix()
         {
-            MelonLogger.Msg("SpeedHackDetector.Update() called");
-            return false; // Bloqueia a execução do método Update
+            MelonDebug.Msg("SpeedHackDetector.Update() called");
+            return false;
         }
     }
 }
