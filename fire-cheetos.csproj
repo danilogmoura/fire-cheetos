@@ -36,6 +36,7 @@
         <PostBuildEvent>move IEHHook.dll "E:\Games\Steam\steamapps\common\Firestone\Mods"</PostBuildEvent>
     </PropertyGroup>
     <ItemGroup>
+        <Compile Include="Hooks\BattleMainStageManager.cs"/>
         <Compile Include="Hooks\EnemySpawner.cs"/>
         <Compile Include="Hooks\BattleInputController.cs"/>
         <Compile Include="Hooks\FirestoneResearchHandler.cs"/>
