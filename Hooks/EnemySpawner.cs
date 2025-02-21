@@ -8,9 +8,8 @@ namespace FireCheetos.Hooks
     {
         private static void Postfix(EnemySpawner __instance)
         {
-            if (!Main.feature3Enabled) return; // Executa o código original se a opção estiver desativada
+            if (!Main.feature3Enabled) return;
 
-            // Log para depuração
             foreach (var instanceBattleEnemy in __instance.battleEnemies)
             {
                 instanceBattleEnemy.currentHealth = 1;
