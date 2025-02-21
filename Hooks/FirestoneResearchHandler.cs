@@ -10,8 +10,8 @@ namespace FireCheetos.Hooks
     {
         public static bool Prefix(BattleMainStageManager __instance)
         {
-            MelonLogger.Msg("Interceptado: WavesIncreasement => totalChanceToSkipWave: " +
-                            __instance.totalChanceToSkipWave);
+            MelonDebug.Msg("Interceptado: WavesIncreasement => totalChanceToSkipWave: " +
+                           __instance.totalChanceToSkipWave);
 
             __instance.totalChanceToSkipWave = new ObscuredDouble(0.9);
             return true;
@@ -23,8 +23,8 @@ namespace FireCheetos.Hooks
     {
         public static bool Prefix(BattleMainStageManager __instance)
         {
-            MelonLogger.Msg("Interceptado: StagesIncreasement => totalChanceToSkipStage: " +
-                            __instance.totalChanceToSkipStage + " | maxStageNumber: " + __instance.chanceToSkipStage);
+            MelonDebug.Msg("Interceptado: StagesIncreasement => totalChanceToSkipStage: " +
+                           __instance.totalChanceToSkipStage + " | maxStageNumber: " + __instance.chanceToSkipStage);
 
             // __instance.totalChanceToSkipStage = new ObscuredDouble(0.6);
             return true;
